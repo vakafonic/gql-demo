@@ -8,7 +8,7 @@ help:
 
 init-network:
 	@docker network create --driver=bridge --subnet=172.34.20.0/24 backend_services && \
-	@docker network create --driver=bridge --subnet=172.33.20.0/24 frontend_gateway
+	docker network create --driver=bridge --subnet=172.33.20.0/24 frontend_gateway
 
 init-be:
 	@docker-compose run --rm app_backend composer install
