@@ -31,7 +31,7 @@ class UserController extends AbstractController
     #[Route('/user/logged', name: 'Logged in user')]
     public function logged(): Response
     {
-        return $this->json(self::USERS[0]['id']);
+        return $this->json(self::USERS[1]['id']);
     }
 
 
