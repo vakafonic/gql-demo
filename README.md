@@ -1,5 +1,7 @@
 This is a demo project to show how GraphQL works as a Gateway between microservices.
 
+![Routing](routing.jpg?raw=true "Routing")
+
 How to run project
 
 1) Install docker + docker-compose
@@ -16,3 +18,4 @@ Interesting files
 - gateway/index.js - all that related to GQL you can find in 1 file, everything is commented
 - docker/nginx/conf.d/XXX.conf - configs of nginx - just for insuring that we have 3 different services
 - api/src/Controller/XXXXXController.php - contains simple methods and mocked data, you can find data description there
+
