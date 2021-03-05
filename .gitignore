@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea
+
+/api/var
+/api/vendor
+
+/gateway/node_modules

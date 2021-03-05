@@ -1,0 +1,54 @@
+version: '3.6'
+services:
+  frontend_gateway:
+    tty: true
+    container_name: frontend_gateway
+    build:
+      context: docker/frontend_gateway # very basic node container
+      target: dev
+    volumes:
+      - ./gateway:/usr/src/app
+    ports:
+      - 4000:4000
+    command: [ 'npm', 'run', 'start' ]
+    depends_on:
+      - webserver # backend nginx should be loaded first
+    networks: # only GW has access both to BE and FE
+      - frontend_gateway
+      - backend_services
+  app_backend:
+    tty: true
+    image: phpdockerio/php80-fpm
+    volumes:
+      - ./api:/var/www/api
+    working_dir: /var/www/api
+    depends_on:
+      - webserver
+    networks:
+      backend_services:
+        aliases:
+          - userapi.loc   # this container can be accessed by using any of this aliases from other containers
+          - cdnapi.loc    # from that network. In our scheme we have 3 services with different url`s and containers
+          - streamapi.loc # but served by 1 real container (to show you that this requests goes to different services)
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./api:/var/www/api
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      backend_services:
+        aliases:
+          - userapiaddr.loc     # nginx has different aliases
+          - cdnapiaddr.loc
+          - streamapiaddr.loc
+networks:
+  frontend_gateway:
+    external: true
+  backend_services:
+    external: true

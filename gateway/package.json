@@ -1,0 +1,83 @@
+{
+  "name": "frontend-gateway",
+  "license": "proprietary",
+  "repository": {
+    "type": "git",
+    "url": "todo"
+  },
+  "version": "1.0.0",
+  "description": "Frontend graphql gateway",
+  "author": "Ivan D",
+  "main": "app/server.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".git",
+      "node_modules"
+    ],
+    "exec": "npm start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(ts)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|md)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@types/compression": "^1.0.0",
+    "@types/graphql": "^14.2.3",
+    "@types/graphql-depth-limit": "^1.1.0",
+    "@types/node": "^12.7.11",
+    "@types/thrift": "^0.10.8",
+    "apollo-datasource-rest": "^0.10.0",
+    "apollo-server": "^2.21.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookies": "^0.8.0",
+    "dataloader": "^2.0.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "graphql": "^14.7.0",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-import": "^0.7.1",
+    "graphql-import-node": "0.0.4",
+    "graphql-middleware": "^4.0.1",
+    "graphql-subscriptions": "^1.2.0",
+    "graphql-upload": "^9.0.0",
+    "lodash": "^4.17.21",
+    "opentracing": "^0.14.4",
+    "request-context": "^2.0.0",
+    "subscriptions-transport-ws": "^0.9.18",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.7.2",
+    "winston": "^3.2.1",
+    "winston-transport-sentry-node": "^0.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-graphql": "^3.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.2",
+    "ncp": "^2.0.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  },
+  "keywords": []
+}

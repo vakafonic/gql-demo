@@ -1,0 +1,51 @@
+parameters:
+  # Transactions will be processed asynchronously using generator to support pagination to be able to parse long files
+  # this value describes how much values will be processed (read from file + requested through API) in parallel
+  default_batch_size: 2
+
+  # Base urls for external API's
+  binlist_base_uri: 'https://lookup.binlist.net/'
+  exchange_rates_base_uri: 'https://api.exchangeratesapi.io/'
+
+  # Calculation settings
+  calculation_precision: 5  # how accurate we should be in our math operations
+
+  calculation_round: 2      # the result will be rounded using standard round logic
+                            # (check https://www.php.net/manual/ru/function.round.php) for PHP_ROUND_HALF_UP
+
+  base_currency: 'EUR'      # basic currency that we count rates from
+
+  rate_cache_ttl: 3600      #  exchange rates will be cached for hour (change according to BL)
+
+  # RateCalculator settings
+  # European related settings
+  european_country_fee: '0.01'
+  non_european_country_fee: '0.02'
+  european_countries:
+    - 'AT'
+    - 'BE'
+    - 'BG'
+    - 'CY'
+    - 'CZ'
+    - 'DE'
+    - 'DK'
+    - 'EE'
+    - 'ES'
+    - 'FI'
+    - 'FR'
+    - 'GR'
+    - 'HR'
+    - 'HU'
+    - 'IE'
+    - 'IT'
+    - 'LT'
+    - 'LU'
+    - 'LV'
+    - 'MT'
+    - 'NL'
+    - 'PO'
+    - 'PT'
+    - 'RO'
+    - 'SE'
+    - 'SI'
+    - 'SK'
